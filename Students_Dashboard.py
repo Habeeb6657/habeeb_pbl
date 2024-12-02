@@ -10,8 +10,8 @@ import os
 class StudentDashboard:
     def __init__(self):
         # MongoDB Connection
-        # mongo_connection_string = st.secrets.get("MONGO_CONNECTION_STRING")
-        mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING", st.secrets.get("MONGO_CONNECTION_STRING"))
+        mongo_connection_string = st.secrets.get("MONGO_CONNECTION_STRING")
+        # mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING", st.secrets.get("MONGO_CONNECTION_STRING"))
         self.mongo_client = pymongo.MongoClient(mongo_connection_string)
         self.db = self.mongo_client['student_recommendation_db']
         self.students_collection = self.db['students']
