@@ -17,8 +17,8 @@ def initialize_session_state():
 def setup_llm():
     """Setup LLM and chain"""
     # Securely load API key from environment or secrets
-    # google_api_key = st.secrets.get("GOOGLE_API_KEY")
-    google_api_key = os.getenv("GOOGLE_API_KEY", st.secrets.get("GOOGLE_API_KEY"))
+    google_api_key = st.secrets.get("GOOGLE_API_KEY")
+    # google_api_key = os.getenv("GOOGLE_API_KEY", st.secrets.get("GOOGLE_API_KEY"))
     os.environ["GOOGLE_API_KEY"] = google_api_key
 
     llm = ChatGoogleGenerativeAI(
