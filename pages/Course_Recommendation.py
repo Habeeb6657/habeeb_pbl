@@ -7,15 +7,15 @@ import os
 class StudentRecommendationApp:
     def __init__(self):
         # Securely load API key from environment or secrets
-        # gemini_api_key = st.secrets.get("GEMINI_API_KEY")
-        gemini_api_key = os.getenv("GEMINI_API_KEY", st.secrets.get("GEMINI_API_KEY"))
+        gemini_api_key = st.secrets.get("GEMINI_API_KEY")
+        # gemini_api_key = os.getenv("GEMINI_API_KEY", st.secrets.get("GEMINI_API_KEY"))
         genai.configure(api_key=gemini_api_key)
         
         self.gemini_model = genai.GenerativeModel('gemini-pro')
         
         # MongoDB Connection
-        # mongo_connection_string = st.secrets.get("MONGO_CONNECTION_STRING")
-        mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING", st.secrets.get("MONGO_CONNECTION_STRING"))
+        mongo_connection_string = st.secrets.get("MONGO_CONNECTION_STRING")
+        # mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING", st.secrets.get("MONGO_CONNECTION_STRING"))
         self.mongo_client = pymongo.MongoClient(mongo_connection_string)
         self.db = self.mongo_client['student_recommendation_db']
         self.students_collection = self.db['students']
